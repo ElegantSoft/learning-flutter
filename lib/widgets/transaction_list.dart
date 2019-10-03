@@ -25,12 +25,18 @@ class _TransactionListState extends State<TransactionList> {
                   margin:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blueAccent, width: 2)),
+                      border: Border.all(
+                        width: 2,
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                      borderRadius:
+                          BorderRadius.all(Radius.elliptical(10, 20))),
                   padding: EdgeInsets.all(10.0),
                   child: Text(
                     '\$${widget.transactions[index].amount}',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.blueAccent),
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).primaryColorDark),
                   ),
                 ),
                 Container(
@@ -40,12 +46,17 @@ class _TransactionListState extends State<TransactionList> {
                       Text(
                         widget.transactions[index].title,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            fontFamily: 'OpenSans'),
                       ),
                       Text(
                         DateFormat.yMMM()
                             .format(widget.transactions[index].date),
-                        style: TextStyle(color: Colors.blueGrey),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context).primaryColorDark),
                       )
                     ],
                   ),

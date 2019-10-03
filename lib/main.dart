@@ -9,7 +9,17 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(home: new HomeScreen());
+    return new MaterialApp(
+      home: new HomeScreen(),
+      title: 'Personal Expenses',
+      theme: ThemeData(
+          primarySwatch: Colors.red,
+          accentColor: Colors.black,
+          fontFamily: 'Quicksand',
+          appBarTheme: AppBarTheme(
+              textTheme: ThemeData.light().textTheme.copyWith(
+                  title: TextStyle(fontFamily: 'OpenSans', fontSize: 20)))),
+    );
   }
 }
 
@@ -50,39 +60,38 @@ class _MyAppState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => _showModalToAddTransaction(context),
-            )
-          ],
-          title: Text('Material App Bar'),
+    return Scaffold(
+      appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _showModalToAddTransaction(context),
+          )
+        ],
+        title: Text(
+          'Personal Expenses',
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Card(
-                elevation: 3,
-                child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text('charts'),
-                ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Card(
+              elevation: 3,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Text('charts'),
               ),
-              TransactionList(_userTransactions),
-            ],
-          ),
+            ),
+            TransactionList(_userTransactions),
+          ],
         ),
-        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => _showModalToAddTransaction(context),
-        ),
+      ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _showModalToAddTransaction(context),
       ),
     );
   }

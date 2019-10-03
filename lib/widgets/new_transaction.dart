@@ -39,9 +39,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 keyboardType: TextInputType.number,
                 onSubmitted: (_) => submitData),
             FlatButton(
-                child: Text('Add to Transactions'),
-                textColor: Colors.purple,
-                onPressed: submitData)
+                child: Text('Add to Transactions'), onPressed: submitData)
           ],
         ),
       ),
